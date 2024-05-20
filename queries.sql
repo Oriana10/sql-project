@@ -6,7 +6,7 @@ CREATE TABLE Cliente (
     DNI VARCHAR(50) NOT NULL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL
+    email VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE Estadio (
@@ -15,13 +15,15 @@ CREATE TABLE Estadio (
 );
 
 CREATE TABLE Seccion (
-    seccionID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    seccionID INT IDENTITY PRIMARY KEY NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     capacidad_maxima INT NOT NULL,
     precio FLOAT NOT NULL,
-    ofrece_servicio BIT NOT NULL,
+    ofrece_servicio BIT NOT NULL DEFAULT 0,
     estadioID INT NOT NULL,
     CONSTRAINT fk_Estadio FOREIGN KEY (estadioID) REFERENCES Estadio(estadioID)
+    CONSTRAINT ck_nombre check (nombre in ('Campo delantero','Campo trasero','Platea baja 1','Platea baja 2','Platea alta 1','Platea alta 2'))
+    CONSTRAINT ck_precio check ( precio >= 0)
 );
 
 CREATE TABLE Banda (
@@ -33,7 +35,7 @@ CREATE TABLE Asiento (
     asientoID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     fila VARCHAR(50) NOT NULL,
     columna VARCHAR(50) NOT NULL,
-    esta_vendido BIT NOT NULL,
+    esta_vendido BIT NOT NULL DEFAULT 0,
     seccionID INT NOT NULL,
     CONSTRAINT fk_Seccion FOREIGN KEY (seccionID) REFERENCES Seccion(seccionID)
 );
