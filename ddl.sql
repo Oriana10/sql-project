@@ -22,7 +22,7 @@ CREATE TABLE Seccion (
     nombre VARCHAR(100) NOT NULL,
     estadioID INT NOT NULL,
     CONSTRAINT CK_Nombre check (nombre in ('Campo delantero','Campo trasero','Platea baja 1','Platea baja 2','Platea alta 1','Platea alta 2')),
-    CONSTRAINT CK_Precio check (precio >= 0)
+    CONSTRAINT CK_Precio check (precio >= 0),
     CONSTRAINT FK_Estadio FOREIGN KEY (estadioID) REFERENCES Estadio(estadioID)
 );
 
@@ -39,8 +39,17 @@ CREATE TABLE Asiento (
     columna VARCHAR(50) NOT NULL,
     esta_vendido BIT NOT NULL DEFAULT 0,
     seccionID INT NOT NULL,
-    CONSTRAINT (FK_Seccion) FOREIGN KEY (seccionID) REFERENCES Seccion(seccionID)
+    CONSTRAINT FK_Seccion_Asiento FOREIGN KEY (seccionID) REFERENCES Seccion(seccionID)
 );
+
+CREATE TABLE Compra (
+	compraID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	fechaCompra DATE NOT NULL,
+	DNI VARCHAR(8) NOT NULL,
+    CONSTRAINT FK_Cliente_Compra FOREIGN KEY (DNI)  REFERENCES Cliente(DNI)
+);
+
+
 
 CREATE TABLE Entrada (
     compraID INT NOT NULL,
@@ -51,7 +60,7 @@ CREATE TABLE Entrada (
     DNI_propietario VARCHAR(8) NOT NULL,
     precio FLOAT,
 	CONSTRAINT PK_Entrada PRIMARY KEY (bandaID, estadioID, DNI_propietario),
-    CONSTRAINT fk_Compra_Entrada FOREIGN KEY (compraID) REFERENCES Compra(compraID)
+    CONSTRAINT fk_Compra_Entrada FOREIGN KEY (compraID) REFERENCES Compra(compraID),
     CONSTRAINT fk_Banda_Entrada FOREIGN KEY (bandaID) REFERENCES Banda(bandaID),
     CONSTRAINT fk_Asiento_Entrada FOREIGN KEY (asientoID) REFERENCES Asiento(asientoID),
     CONSTRAINT fk_Seccion_Entrada FOREIGN KEY (seccionID) REFERENCES Seccion(seccionID),
@@ -59,8 +68,5 @@ CREATE TABLE Entrada (
 );
 
 
-CREATE TABLE Compra (
-	compraID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	fechaCompra DATE NOT NULL,
-    FOREIGN KEY (FK_Cliente) REFERENCES Cliente(DNI),
-)
+
+
