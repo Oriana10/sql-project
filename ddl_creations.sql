@@ -23,9 +23,8 @@ CREATE TABLE Seccion (
     estadioID INT NOT NULL,
     CONSTRAINT CK_Nombre check (nombre in ('Campo delantero','Campo trasero','Platea baja 1','Platea baja 2','Platea alta 1','Platea alta 2')),
     CONSTRAINT CK_Precio check (precio >= 0),
-    CONSTRAINT FK_Estadio FOREIGN KEY (estadioID) REFERENCES Estadio(estadioID)
+    CONSTRAINT FK_Estadio FOREIGN KEY (estadioID) REFERENCES Estadio(estadioID),
     CONSTRAINT UC_Nombre_Estadio UNIQUE (nombre, estadioID)
-
 );
 
 
