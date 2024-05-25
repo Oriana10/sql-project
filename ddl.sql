@@ -19,7 +19,7 @@ CREATE TABLE Seccion (
     capacidad_maxima INT NOT NULL,
     precio FLOAT NOT NULL,
     ofrece_servicios BIT NOT NULL DEFAULT 0,
-    nombre VARCHAR(100) NOT NULL,
+    nombre VARCHAR(100) NOT NULL UNIQUE,
     estadioID INT NOT NULL,
     CONSTRAINT CK_Nombre check (nombre in ('Campo delantero','Campo trasero','Platea baja 1','Platea baja 2','Platea alta 1','Platea alta 2')),
     CONSTRAINT CK_Precio check (precio >= 0),
