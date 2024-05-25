@@ -177,6 +177,29 @@ VALUES ('2024-05-24', '12345678'),
 		('2024-03-23', '67890123'),
 		('2024-04-27', '90123456');
 
+-- Entradas de Campo Delantero
+INSERT INTO Entrada (compraID, bandaID, asientoID, seccionID, estadioID, DNI_propietario, precio)
+VALUES  (1, 1, null, 1, 1, '12345678', 150.00), -- misma entrada para misma banda, seccion y dueño
+		(1, 1, null, 1, 1, '34567890', 250.00),
+		(2, 1, null, 1, 1, '32067890', 250.00),
+		(3, 1, null, 1, 1, '39867890', 250.00);
+
+-- Entradas de  Campo Trasero
+INSERT INTO Entrada (compraID, bandaID, asientoID, seccionID, estadioID, DNI_propietario, precio)
+VALUES  (1, 1, null, 2, 1, '23456789', 200.00),
+		(3, 1, null, 2, 1, '43456789', 200.00),
+		(4, 1, null, 2, 1, '14345678', 150.00);
+
+-- Entradas de  Platea baja 1
+INSERT INTO Entrada (compraID, bandaID, asientoID, seccionID, estadioID, DNI_propietario, precio)
+VALUES  (3, 1, 1, 3, 1, '23454789', 300.00),
+		(4, 1, 2, 3, 1, '12345478', 450.00);
+
+-- Entradas de  Platea baja 2
+INSERT INTO Entrada (compraID, bandaID, asientoID, seccionID, estadioID, DNI_propietario, precio)
+VALUES  (3, 1, 2, 4, 1, '43454749', 400.00),
+		(4, 1, 3, 4, 1, '12345466', 450.00);
+
 --------------------------------
 
 -- Verificaciones
@@ -186,7 +209,7 @@ select * from Banda
 select * from Seccion
 select * from Asiento
 select * from Compra
+select * from Entrada
 
---------------------------------
 
 
