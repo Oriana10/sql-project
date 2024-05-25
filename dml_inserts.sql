@@ -8,7 +8,17 @@ VALUES ('12345678', 'Juan', 'Pérez', 'juan.perez@example.com'),
        ('78901234', 'Francisco', 'García', 'francisco.garcia@example.com'),
        ('89012345', 'Teresa', 'López', 'teresa.lopez@example.com'),
        ('90123456', 'Sergio', 'Torres', 'sergio.torres@example.com'),
-       ('01234567', 'Isabel', 'Ramírez', 'isabel.ramirez@example.com');
+       ('01234567', 'Isabel', 'Ramírez', 'isabel.ramirez@example.com'),
+	   ('43126134', 'Bruno', 'David', 'bruno.david9914@gmail.com'),
+	   ('25478951', 'Graciela', 'Alfano', 'graci.alfa@gmail.com'),
+	   ('42001245', 'Alesandro', 'Romero', 'aelromero@gmail.com'),
+	   ('10425647', 'Elma', 'Juarez', 'elmitaj@hotmail.com'),
+	   ('5888987', 'Oscar', 'Ripol', 'oscar_ripol@outlook.com'),
+	   ('32569987', 'Hernan', 'Armando', 'armateunohernan@gmail.com'),
+	   ('45788733', 'Lucio', 'Espindola', 'luchoes@gmail.com'),
+	   ('43889992', 'Sandro', 'Ortigoza', 'sandrito2000@gmail.com'),
+	   ('25778945', 'Alejandra', 'Suzik', 'alesuzik@gmail.com'),
+	   ('18963256', 'Alberto', 'Fernandinho', 'eltitere@gmail.com');
 
 INSERT INTO Estadio (nombre)
 VALUES ('Defensores del Bajo'),
