@@ -76,7 +76,7 @@ asiento (si corresponde) de todas las entradas compradas por ese cliente. */
 
 -- NOMBRE, SECCION, PRECIO, NUMERO DE ASIENTO
 
-SELECT CONCAT(CL.nombre, ' ', CL.apellido) as Cliente, SE.nombre as Campo, EN.precio,
+SELECT CONCAT(CL.nombre, ' ', CL.apellido) as Cliente, SE.nombre as Campo, EN.precio as Precio,
 CASE
 	WHEN ASI.fila IS NULL OR ASI.columna IS NULL THEN 'N/A'
 	ELSE CONCAT(ASI.fila, ASI.columna) 
