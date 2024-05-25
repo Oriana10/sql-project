@@ -71,6 +71,28 @@ SELECT
 SELECT SUM(en.precio) AS 'Total ingresos generados' FROM Entrada as en INNER JOIN Estadio as es on en.estadioID=es.estadioID
 INNER JOIN Banda AS b ON en.bandaID=b.bandaID
 
+/* e. Dado un DNI de un cliente obtener el nombre, la sección, el precio y el número de
+asiento (si corresponde) de todas las entradas compradas por ese cliente. */
+
+-- NOMBRE, SECCION, PRECIO, NUMERO DE ASIENTO
+
+SELECT CONCAT(CL.nombre, ' ', CL.apellido) as Cliente, SE.nombre as Campo, EN.precio,
+CASE
+	WHEN ASI.fila IS NULL OR ASI.columna IS NULL THEN 'N/A'
+	ELSE CONCAT(ASI.fila, ASI.columna) 
+END as Asiento
+FROM Cliente AS CL
+INNER JOIN Compra AS CO
+ON CO.DNI = CL.DNI
+INNER JOIN Entrada AS EN
+ON EN.compraID = CO.compraID
+INNER JOIN Seccion AS SE
+ON SE.seccionID = EN.seccionID
+LEFT JOIN Asiento AS ASI      
+ON EN.asientoID = ASI.asientoID
+WHERE CL.DNI = '12345678';
+
+
 -- f. Calcular el total de entradas vendidas por cada sección para el recital del grupo "El
 -- Cuarteto de 3" en el estadio "Defensores del Bajo"
 SELECT s.nombre AS Seccion, COUNT(*) AS 'Entradas Totales'

@@ -32,7 +32,6 @@ CREATE TABLE Banda (
     nombre VARCHAR(100) NOT NULL
 );
 
-
 CREATE TABLE Asiento (
     asientoID INT IDENTITY(1,1) PRIMARY KEY,
     fila VARCHAR(50) NOT NULL,
@@ -48,8 +47,6 @@ CREATE TABLE Compra (
 	DNI VARCHAR(15) NOT NULL,
     CONSTRAINT FK_Cliente_Compra FOREIGN KEY (DNI)  REFERENCES Cliente(DNI)
 );
-
-
 
 CREATE TABLE Entrada (
     compraID INT NOT NULL,
